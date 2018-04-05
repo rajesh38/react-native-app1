@@ -11,6 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
+import Timer from './components/Timer';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -33,6 +34,7 @@ export default class App extends Component<Props> {
         <Text style={styles.instructions}>
           {instructions}
         </Text>
+        <Timer style={styles.timer}/>
       </View>
     );
   }
@@ -64,4 +66,8 @@ const styles = StyleSheet.create({
     color: 'green',
     marginBottom: 5,
   },
+  timer: {
+    color: 'blue',
+    fontSize: 21
+  }
 });
