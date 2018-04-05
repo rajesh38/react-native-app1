@@ -12,6 +12,7 @@ import {
   View
 } from 'react-native';
 import Timer from './components/Timer';
+import Signature from './components/Signature';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -35,6 +36,7 @@ export default class App extends Component<Props> {
           {instructions}
         </Text>
         <Timer style={styles.timer}/>
+        <Signature style={styles.signature}/>
       </View>
     );
   }
@@ -48,12 +50,11 @@ const styles = StyleSheet.create({
         backgroundColor: 'red',
       },
       android: {
-        backgroundColor: 'blue',
+        backgroundColor: 'lightgrey',
       },
     }),
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
   welcome: {
     fontSize: 20,
@@ -69,5 +70,11 @@ const styles = StyleSheet.create({
   timer: {
     color: 'blue',
     fontSize: 21
+  },
+  signature: {
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+    fontSize: 20
   }
 });
