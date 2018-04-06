@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import Timer from './components/Timer';
 import Signature from './components/Signature';
+import Explorer from './components/explorer';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -54,7 +55,7 @@ export default class App extends Component<Props> {
           </View>
         }
         {!this.state.welcomeScreen &&
-          <Text>Exploring</Text>
+          <Explorer/>
         }
         <Signature style={styles.signature}/>
       </View>
