@@ -9,7 +9,8 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  Button
 } from 'react-native';
 import Timer from './components/Timer';
 import Signature from './components/Signature';
@@ -23,19 +24,38 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+  constructor (props) {
+    super(props);
+    this.state = {
+      welcomeScreen: true
+    }
+  }
+  exploreApp = () => {
+    this.setState({welcomeScreen: false});
+  }
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
+        {this.state.welcomeScreen &&
+          <View>
+          <Text style={styles.welcome}>
           Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-        <Timer style={styles.timer}/>
+          </Text>
+          <Text style={styles.instructions}>
+            To get started, edit App.js
+          </Text>
+          <Text style={styles.instructions}>
+            {instructions}
+          </Text>
+          <Timer style={styles.timer}/>
+          <Button title="Explore App"
+                  onPress={this.exploreApp}
+          />
+          </View>
+        }
+        {!this.state.welcomeScreen &&
+          <Text>Exploring</Text>
+        }
         <Signature style={styles.signature}/>
       </View>
     );
@@ -69,7 +89,8 @@ const styles = StyleSheet.create({
   },
   timer: {
     color: 'blue',
-    fontSize: 21
+    fontSize: 21,
+    textAlign: 'center'
   },
   signature: {
     position: 'absolute',
