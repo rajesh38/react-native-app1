@@ -8,6 +8,7 @@ export default class Timer extends Component {
         this.state = {
             time: this.getFormatedTime()
         }
+        this.timerInterval = null;
     }
     getTime = () => {
         let curDate = new Date;
@@ -25,9 +26,12 @@ export default class Timer extends Component {
         this.setState({time: this.getFormatedTime()});
     }
     componentDidMount () {
-        setInterval(() => {
+        this.timerInterval = setInterval(() => {
             this.setTime();
         }, 1000);
+    }
+    componentWillUnmount () {
+        clearInterval(this.timerInterval);
     }
     render () {
         return (

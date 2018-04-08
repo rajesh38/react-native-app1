@@ -10,11 +10,11 @@ import {
   StyleSheet,
   Text,
   View,
-  Button
 } from 'react-native';
 import Timer from './components/Timer';
 import Signature from './components/Signature';
 import Explorer from './components/explorer';
+import { Button } from 'react-native-elements';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
