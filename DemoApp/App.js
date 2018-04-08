@@ -60,7 +60,7 @@ export default class App extends Component<Props> {
         {!this.state.welcomeScreen &&
           <Explorer exitExplorer={this.backToWelcomeScreen}/>
         }
-        <Signature style={styles.signature}/>
+        <Signature/>
       </View>
     );
   }
@@ -96,10 +96,4 @@ const styles = StyleSheet.create({
     fontSize: 21,
     textAlign: 'center'
   },
-  signature: {
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
-    fontSize: 20
-  }
 });
