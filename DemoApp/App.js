@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import Timer from './components/Timer';
 import Signature from './components/Signature';
+import Footer from './components/Footer';
 import Explorer from './components/explorer';
 import { Button } from 'react-native-elements';
 
@@ -60,7 +61,7 @@ export default class App extends Component<Props> {
         {!this.state.welcomeScreen &&
           <Explorer exitExplorer={this.backToWelcomeScreen}/>
         }
-        <Signature/>
+        <Footer contentComponent={Signature}/>
       </View>
     );
   }
