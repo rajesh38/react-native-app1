@@ -13,7 +13,9 @@ import {
 } from 'react-native';
 import Timer from './components/Timer';
 import Signature from './components/Signature';
+import Header from './components/Header';
 import Footer from './components/Footer';
+import AppHeaderContent from './components/AppHeaderContent';
 import Explorer from './components/explorer';
 import { Button } from 'react-native-elements';
 
@@ -41,11 +43,9 @@ export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
+        <Header contentComponent={AppHeaderContent}/>
         {this.state.welcomeScreen &&
-          <View>
-          <Text style={styles.welcome}>
-          Welcome to React Native!
-          </Text>
+          <View style={styles.welcomeScreenContainer}>
           <Text style={styles.instructions}>
             To get started, edit App.js
           </Text>
@@ -80,12 +80,6 @@ const styles = StyleSheet.create({
     }),
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    color: 'red',
-    margin: 10,
   },
   instructions: {
     textAlign: 'center',
