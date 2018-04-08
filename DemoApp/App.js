@@ -34,6 +34,9 @@ export default class App extends Component<Props> {
   exploreApp = () => {
     this.setState({welcomeScreen: false});
   }
+  backToWelcomeScreen = () => {
+    this.setState({welcomeScreen: true});
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -55,7 +58,7 @@ export default class App extends Component<Props> {
           </View>
         }
         {!this.state.welcomeScreen &&
-          <Explorer/>
+          <Explorer exitExplorer={this.backToWelcomeScreen}/>
         }
         <Signature style={styles.signature}/>
       </View>
