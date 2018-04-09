@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import {View, Text, Linking, StyleSheet, Dimensions} from 'react-native';
+import {Text, StyleSheet} from 'react-native';
 import DataStore from '../DataStore';
 
-export default class Signature extends Component {
+export default class AppHeaderContent extends Component {
     render() {
         return (
-            <Text style={styles.headerText}>
-                Welcome to React Native!
-            </Text>
+          <Text style={styles.headerText}>
+              Welcome to React Native!
+          </Text>
         );
     };
 }

@@ -41,26 +41,29 @@ export default class App extends Component<Props> {
     this.setState({welcomeScreen: true});
   }
   render() {
+    let containerCentered = !!this.state.welcomeScreen;
     return (
-      <View style={styles.container}>
+      <View style={styles.outerContainer}>
         <Header contentComponent={AppHeaderContent}/>
-        {this.state.welcomeScreen &&
-          <View style={styles.welcomeScreenContainer}>
-          <Text style={styles.instructions}>
-            To get started, edit App.js
-          </Text>
-          <Text style={styles.instructions}>
-            {instructions}
-          </Text>
-          <Timer style={styles.timer}/>
-          <Button title="Explore App"
-                  onPress={this.exploreApp}
-          />
-          </View>
-        }
-        {!this.state.welcomeScreen &&
-          <Explorer exitExplorer={this.backToWelcomeScreen}/>
-        }
+        <View style={containerCentered ? styles.centered : {}}>
+          {this.state.welcomeScreen &&
+            <View>
+            <Text style={styles.instructions}>
+              To get started, edit App.js
+            </Text>
+            <Text style={styles.instructions}>
+              {instructions}
+            </Text>
+            <Timer style={styles.timer}/>
+            <Button title="Explore App"
+                    onPress={this.exploreApp}
+            />
+            </View>
+          }
+          {!this.state.welcomeScreen &&
+            <Explorer exitExplorer={this.backToWelcomeScreen}/>
+          }
+        </View>
         <Footer contentComponent={Signature}/>
       </View>
     );
@@ -68,7 +71,7 @@ export default class App extends Component<Props> {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  outerContainer: {
     flex: 1,
     ...Platform.select({
       ios: {
@@ -78,8 +81,11 @@ const styles = StyleSheet.create({
         backgroundColor: 'lightgrey',
       },
     }),
-    justifyContent: 'center',
     alignItems: 'center',
+  },
+  centered: {
+    flex: 1,
+    justifyContent: 'center',
   },
   instructions: {
     textAlign: 'center',
