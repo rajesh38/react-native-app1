@@ -18,7 +18,7 @@ export default class Footer extends Component {
 
 const styles = StyleSheet.create({
   footer: {
-    width: Dimensions.get('window').width,
+    width: '100%',
     height: 30,
     position: 'absolute',
     bottom: 0,

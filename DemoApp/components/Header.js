@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   header: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: Dimensions.get('window').width,
+    width: '100%',
     height: 40,
     position: 'absolute',
     top: 0,
