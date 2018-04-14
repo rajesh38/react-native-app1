@@ -11,6 +11,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { Provider } from 'react-redux';
 import Timer from './components/Timer';
 import Signature from './components/Signature';
 import Header from './components/Header';
@@ -18,6 +19,7 @@ import Footer from './components/Footer';
 import AppHeaderContent from './components/AppHeaderContent';
 import Explorer from './components/explorer';
 import { Button } from 'react-native-elements';
+import configureStore from './store/configureStore';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -26,10 +28,12 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
+const store = configureStore();
+
 type Props = {};
 export default class App extends Component<Props> {
-  constructor (props) {
-    super(props);
+  constructor (props, context) {
+    super(props, context);
     this.state = {
       welcomeScreen: true
     }
@@ -43,6 +47,7 @@ export default class App extends Component<Props> {
   render() {
     let containerCentered = !!this.state.welcomeScreen;
     return (
+      <Provider store={store}>
       <View style={styles.outerContainer}>
         <Header contentComponent={AppHeaderContent}/>
         <View style={containerCentered ? styles.centered : {}}>
@@ -61,11 +66,14 @@ export default class App extends Component<Props> {
             </View>
           }
           {!this.state.welcomeScreen &&
-            <Explorer exitExplorer={this.backToWelcomeScreen}/>
+            <Explorer exitExplorer={this.backToWelcomeScreen}
+                      store={store.explorerRootReducer}
+            />
           }
         </View>
         <Footer contentComponent={Signature}/>
       </View>
+      </Provider>
     );
   }
 }
