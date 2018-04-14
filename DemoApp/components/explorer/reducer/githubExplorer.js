@@ -1,3 +1,5 @@
+import * as ActionTypes from '../githubExplorer/actions/ActionTypes';
+
 const initState = {
   loading: false,
   loaded: false,
@@ -6,13 +8,13 @@ const initState = {
 
 export default function githubExplorer(state = initState, action) {
   switch (action.type) {
-    case "LOAD_REPOS":
+    case ActionTypes.LOAD_REPO_START:
       return {
-        ...state, loading: true
+        ...state, loading: true, data: action.data
       };
-    case "LOAD_REPOS_SUCCESS":
+    case ActionTypes.LOAD_REPO_SUCCESS:
       return {
-        ...state, loading: false, loaded: true, data: {}
+        ...state, loading: false, loaded: true, data: action.data
       }
     default:
       return state;

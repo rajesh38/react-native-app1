@@ -17,13 +17,14 @@ class Explorer extends Component {
 	}
 	render () {
 		return (
-			<View>
-			<Text style={style.appExplorerTitle}>App Explorer</Text>
-			<Button title="Back to Welcome Screen"
-			onPress={this.props.exitExplorer}></Button>
-			<GithubExplorer githubExplorer={this.props.githubExplorer}
-											dispatch={this.props.dispatch}
-			/>
+			<View style={{height: '100%'}}>
+				<Text style={style.appExplorerTitle}>App Explorer</Text>
+				<Button title="Back to Welcome Screen"
+				onPress={this.props.exitExplorer}></Button>
+				<View style={{padding: 15}}>
+					<GithubExplorer githubExplorer={this.props.githubExplorer} dispatch={this.props.dispatch}
+					/>
+				</View>
 			</View>
 		)
 	}

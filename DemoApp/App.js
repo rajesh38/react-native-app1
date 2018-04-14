@@ -50,7 +50,7 @@ export default class App extends Component<Props> {
       <Provider store={store}>
       <View style={styles.outerContainer}>
         <Header contentComponent={AppHeaderContent}/>
-        <View style={containerCentered ? styles.centered : {}}>
+        <View style={containerCentered ? [styles.bodyContainer, styles.centered] : [styles.bodyContainer]}>
           {this.state.welcomeScreen &&
             <View>
             <Text style={styles.instructions}>
@@ -90,6 +90,9 @@ const styles = StyleSheet.create({
       },
     }),
     alignItems: 'center',
+  },
+  bodyContainer: {
+    width: '100%'
   },
   centered: {
     flex: 1,
