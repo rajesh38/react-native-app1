@@ -36,15 +36,24 @@ class Explorer extends Component {
 							></IconTextContainer>
 					}
 					{!!this.state.currentApp &&
-						<View style={{backgroundColor: 'green'}}>
+						<View style={{
+							backgroundColor: '#888',
+							borderWidth: 2,
+							borderColor: 'green'
+						}}>
 							<TouchableOpacity onPress={() => this.setCurrentApp()}>
+								<View style={{flexDirection: 'row',
+									flexWrap: 'wrap',
+									marginLeft: 5,
+								}}>
 								<Icon
 									name='arrow-left'
 									type='font-awesome'
 									size={15}
-									color='blue'
+									color='white'
 								/>
-							<Text>Explore All</Text>
+							<Text style={{color: 'white', marginLeft: 10}}>Explore All</Text>
+								</View>
 							</TouchableOpacity>
 						</View>
 					}
