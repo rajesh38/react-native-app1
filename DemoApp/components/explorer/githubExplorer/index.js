@@ -22,11 +22,6 @@ export default class GithubExplorer extends Component {
 
   render(){
     let {githubExplorer} = this.props;
-    let keyRows = [];
-    props = Object.keys(githubExplorer.data);
-    for (var i = 0; i < props.length; i++) {
-      keyRows.push(<Text key={`dataKeys[${i}]`}>{props[i]}</Text>);
-    }
     let repoRows = [];
     if (_.get(githubExplorer, 'loaded')) {
       let {repos} = githubExplorer.data;
@@ -38,10 +33,6 @@ export default class GithubExplorer extends Component {
     }
     return(
       <View style={{width: '100%', backgroundColor: 'aqua', height: '100%'}}>
-      <View style={{backgroundColor: 'yellow'}}>
-      <Text style={{fontSize: 16}}>Metadata</Text>
-      {keyRows}
-      </View>
       <View>
       {_.get(githubExplorer, 'loading') &&
         <View>
