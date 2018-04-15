@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   },
   bodyContainer: {
     width: '100%',
-    paddingBottom: 190
+    paddingBottom: 250
   },
   centered: {
     flex: 1,

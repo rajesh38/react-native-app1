@@ -26,7 +26,7 @@ class Explorer extends Component {
 				<Text style={style.appExplorerTitle}>App Explorer</Text>
 				<Button title="Back to Welcome Screen"
 				onPress={this.props.exitExplorer}></Button>
-				<View style={{padding: 15}}>
+			<View style={{paddingLeft: 15, paddingRight: 15, paddingTop: 5}}>
 					{!this.state.currentApp &&
 						<IconTextContainer
 							iconName='github'
@@ -41,6 +41,7 @@ class Explorer extends Component {
 							borderWidth: 2,
 							borderColor: 'green'
 						}}>
+							<Text style={{color: 'white', textAlign: 'center', fontSize: 20}}>{this.state.currentApp}</Text>
 							<TouchableOpacity onPress={() => this.setCurrentApp()}>
 								<View style={{flexDirection: 'row',
 									flexWrap: 'wrap',
@@ -52,7 +53,7 @@ class Explorer extends Component {
 									size={15}
 									color='white'
 								/>
-							<Text style={{color: 'white', marginLeft: 10}}>Explore All</Text>
+								<Text style={{color: 'white', marginLeft: 10}}>Explore All&nbsp;</Text>
 								</View>
 							</TouchableOpacity>
 						</View>
