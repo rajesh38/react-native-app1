@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import {
   View,
   Text,
+  StyleSheet,
+  TouchableOpacity
 } from 'react-native';
 import {Icon} from 'react-native-elements';
 
@@ -12,7 +14,11 @@ export default class IconTextContainer extends Component {
   }
   static propTypes = {
     iconName: PropTypes.string.isRequired,
-    iconType: PropTypes.string
+    iconType: PropTypes.string,
+    iconSize: PropTypes.number
+  }
+  static defaultProps = {
+    iconSize: 30
   }
   render () {
     let iconTypeAttr = this.props.iconType && {
@@ -20,12 +26,14 @@ export default class IconTextContainer extends Component {
     }
     return (
       <View style={styles.iconTextContainer}>
+        <TouchableOpacity onPress={this.props.onPress}>
         <Icon
-          style={styles.icon}
+          size={this.props.iconSize}
           name={this.props.iconName}
           {...iconTypeAttr}
         />
-      <Text>{this.props.text}</Text>
+      <Text style={styles.iconText}>{this.props.text}</Text>
+        </TouchableOpacity>
       </View>
     )
   }
@@ -36,8 +44,8 @@ const styles=StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: 60
-  }
-  icon: {
-    fontSize: 30
+  },
+  iconText: {
+    textAlign: 'center'
   }
 })

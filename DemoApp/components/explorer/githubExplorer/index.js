@@ -15,7 +15,9 @@ export default class GithubExplorer extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(Actions.loadRepos(DataStore.explorer.githubExplorer.repoOwner));
+    if(!this.props.githubExplorer.loaded) {
+      this.props.dispatch(Actions.loadRepos(DataStore.explorer.githubExplorer.repoOwner));
+    }
   }
 
   render(){

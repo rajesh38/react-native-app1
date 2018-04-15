@@ -3,9 +3,10 @@ import {connect} from 'react-redux';
 import {
 	View,
 	Text,
-  StyleSheet
+	StyleSheet,
+	TouchableOpacity
 } from 'react-native';
-import { Button } from 'react-native-elements';
+import { Button, Icon } from 'react-native-elements';
 import GithubExplorer from './githubExplorer';
 import IconTextContainer from '../IconTextContainer';
 
@@ -15,6 +16,9 @@ class Explorer extends Component {
 		this.state = {
 			currentApp: null
 		}
+	}
+	setCurrentApp = (appName) => {
+		this.setState({currentApp: appName});
 	}
 	render () {
 		return (
@@ -28,10 +32,25 @@ class Explorer extends Component {
 							iconName='github'
 							iconType='font-awesome'
 							text='Explore Github'
+							onPress={() => {this.setCurrentApp('githubExplorer');}}
 							></IconTextContainer>
 					}
-					<GithubExplorer githubExplorer={this.props.githubExplorer} dispatch={this.props.dispatch}
-					/>
+					{!!this.state.currentApp &&
+						<View style={{backgroundColor: 'green'}}>
+							<TouchableOpacity onPress={() => this.setCurrentApp()}>
+								<Icon
+									name='arrow-left'
+									type='font-awesome'
+									size={15}
+									color='blue'
+								/>
+							<Text>Explore All</Text>
+							</TouchableOpacity>
+						</View>
+					}
+					{this.state.currentApp == 'githubExplorer' &&
+						<GithubExplorer githubExplorer={this.props.githubExplorer} dispatch={this.props.dispatch}/>
+					}
 				</View>
 			</View>
 		)

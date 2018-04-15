@@ -1,17 +1,26 @@
 import React, {Component} from 'react';
-import {View, Text, Linking, StyleSheet, Dimensions} from 'react-native';
+import {
+  View,
+  Text,
+  Linking,
+  StyleSheet,
+  TouchableHighlight
+} from 'react-native';
 import DataStore from '../DataStore';
 
 export default class Signature extends Component {
     render() {
         return (
+          <View style={{flexDirection: 'row', flexWrap: 'wrap', }}>
             <Text style={styles.signatureText}>
                 Created By:&nbsp;
-                <Text style={styles.signature}
-                      onPress={() => {Linking.openURL(DataStore.creator.link)}}>
-                      {DataStore.creator.name}
-                </Text>
             </Text>
+            <TouchableHighlight onPress={() => {Linking.openURL(DataStore.creator.link)}}>
+            <Text style={styles.signature}>
+                  {DataStore.creator.name}
+            </Text>
+            </TouchableHighlight>
+          </View>
         );
     };
 }
@@ -22,6 +31,7 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   signature: {
-      color: 'green'
+    color: 'green',
+    fontSize: 20
   },
 })

@@ -10,7 +10,7 @@ export default function githubExplorer(state = initState, action) {
   switch (action.type) {
     case ActionTypes.LOAD_REPO_START:
       return {
-        ...state, loading: true, data: action.data
+        ...state, loading: true, loaded: false, data: action.data
       };
     case ActionTypes.LOAD_REPO_SUCCESS:
       return {
