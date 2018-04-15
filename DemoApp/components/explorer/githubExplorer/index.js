@@ -33,7 +33,6 @@ export default class GithubExplorer extends Component {
     }
     return(
       <View style={{width: '100%', backgroundColor: 'aqua', height: '100%'}}>
-      <View>
       {_.get(githubExplorer, 'loading') &&
         <View>
         <Text>Loading repos for {`${_.get(githubExplorer, 'data.repoOwner')}`}</Text>
@@ -45,7 +44,6 @@ export default class GithubExplorer extends Component {
           {repoRows}
         </ScrollView>
       }
-      </View>
       </View>
     );
   }
