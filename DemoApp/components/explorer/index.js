@@ -6,7 +6,8 @@ import {
   StyleSheet
 } from 'react-native';
 import { Button } from 'react-native-elements';
-import GithubExplorer from './githubExplorer'
+import GithubExplorer from './githubExplorer';
+import IconTextContainer from '../IconTextContainer';
 
 class Explorer extends Component {
 	constructor (props, context) {
@@ -22,6 +23,13 @@ class Explorer extends Component {
 				<Button title="Back to Welcome Screen"
 				onPress={this.props.exitExplorer}></Button>
 				<View style={{padding: 15}}>
+					{!this.state.currentApp &&
+						<IconTextContainer
+							iconName='github'
+							iconType='font-awesome'
+							text='Explore Github'
+							></IconTextContainer>
+					}
 					<GithubExplorer githubExplorer={this.props.githubExplorer} dispatch={this.props.dispatch}
 					/>
 				</View>
